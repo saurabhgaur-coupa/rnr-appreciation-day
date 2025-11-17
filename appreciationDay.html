@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coupa Appreciation Image Generator</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background: #f4f7fb;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      color: #0641AD;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .form-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 450px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .form-box label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .form-box input, .form-box textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .generate-btn {
+      background: #0641AD;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .generate-btn:hover {
+      background: #052f80;
+    }
+
+    /* Appreciation Card */
+    #card {
+      width: 650px;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      text-align: center;
+      border: 3px solid #0641AD;
+      position: relative;
+    }
+
+    .title {
+      color: #0641AD;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #0641AD;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 20px;
+      line-height: 1.4;
+      padding: 0 20px;
+      min-height: 80px;
+      max-height: 200px;
+      overflow: hidden;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 18px;
+      font-style: italic;
+      color: #0641AD;
+    }
+
+    .coupa-logo {
+      width: 140px;
+      display: block;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Coupa Appreciation Day – Image Generator</h2>
+
+<div class="form-box">
+
+  <label>Your Name (From):</label>
+  <input id="from" type="text" placeholder="Enter your name" />
+
+  <label>Employee Name:</label>
+  <input id="name" type="text" placeholder="Who are you appreciating?" />
+
+  <label>Message:</label>
+  <textarea id="message" rows="4" placeholder="Write your appreciation..."></textarea>
+
+  <label>Upload Photo:</label>
+  <input id="photoInput" type="file" accept="image/*" />
+
+  <button class="generate-btn" onclick="generateImage()">Generate Appreciation Image</button>
+</div>
+
+<!-- Appreciation Card -->
+<div id="card">
+  <img class="coupa-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Coupa_logo.png/320px-Coupa_logo.png" />
+
+  <img id="photoPreview" class="photo" style="display:none;" />
+
+  <div class="title">Appreciation Day</div>
+
+  <div class="subtitle">👏 Appreciating <span id="namePreview"></span></div>
+
+  <div class="message" id="msgPreview"></div>
+
+  <div class="footer">— <span id="fromPreview"></span></div>
+</div>
+
+<script>
+  const nameInput = document.getElementById("name");
+  const msgInput = document.getElementById("message");
+  const fromInput = document.getElementById("from");
+  const photoInput = document.getElementById("photoInput");
+
+  const namePreview = document.getElementById("namePreview");
+  const msgPreview = document.getElementById("msgPreview");
+  const fromPreview = document.getElementById("fromPreview");
+  const photoPreview = document.getElementById("photoPreview");
+
+  // Live Preview Updates
+  nameInput.addEventListener("input", () => {
+    namePreview.innerText = nameInput.value;
+  });
+
+  msgInput.addEventListener("input", () => {
+    msgPreview.innerText = msgInput.value;
+    autoResizeFont();
+  });
+
+  fromInput.addEventListener("input", () => {
+    fromPreview.innerText = fromInput.value;
+  });
+
+  // Photo Upload Preview
+  photoInput.addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      photoPreview.src = event.target.result;
+      photoPreview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Automatic font resizing for long messages
+  function autoResizeFont() {
+    let maxFont = 22;
+    let minFont = 14;
+    let msg = msgPreview;
+
+    msg.style.fontSize = maxFont + "px";
+
+    while (msg.scrollHeight > msg.clientHeight && maxFont > minFont) {
+      maxFont -= 1;
+      msg.style.fontSize = maxFont + "px";
+    }
+  }
+
+  // Generate final image
+  function generateImage() {
+    const card = document.getElementById("card");
+
+    html2canvas(card, { scale: 3 }).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "coupa-appreciation.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }
+</script>
+
+</body>
+</html>
