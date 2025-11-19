@@ -2,161 +2,605 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Coupa Appreciation Image Generator</title>
+  <title>Coupa ThankYou Day 2025</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Arial", sans-serif;
-      background: #f4f7fb;
-      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
-    h2 {
+    h1 {
       color: #0641AD;
-      font-size: 28px;
-      margin-bottom: 20px;
-      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 30px;
+      font-weight: 700;
       text-align: center;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
     .form-box {
       background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 450px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+      padding: 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      margin-bottom: 40px;
     }
 
     .form-box label {
-      font-weight: bold;
+      font-weight: 600;
       display: block;
-      margin: 10px 0 5px;
-    }
-
-    .form-box input, .form-box textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      margin: 15px 0 8px;
+      color: #333;
       font-size: 15px;
     }
 
-    .generate-btn {
-      background: #0641AD;
-      color: white;
-      padding: 12px 20px;
+    .form-box input, .form-box textarea, .form-box select {
+      width: 100%;
+      padding: 12px;
       border-radius: 8px;
+      border: 2px solid #ddd;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    .form-box input:focus, .form-box textarea:focus, .form-box select:focus {
+      outline: none;
+      border-color: #0641AD;
+    }
+
+    .generate-btn {
+      background: linear-gradient(135deg, #0641AD 0%, #0a5ac7 100%);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
       font-size: 16px;
+      font-weight: 600;
       border: none;
-      margin-top: 15px;
+      margin-top: 20px;
       cursor: pointer;
       width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(6, 65, 173, 0.3);
     }
 
     .generate-btn:hover {
-      background: #052f80;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(6, 65, 173, 0.4);
     }
 
-    /* Appreciation Card */
+    /* ThankYou Day Poster */
     #card {
-      width: 650px;
-      padding: 30px;
-      background: white;
+      width: 800px;
+      min-height: 1000px;
+      height: auto;
+      background: linear-gradient(135deg, #F5E6D3 0%, #F0DCC4 50%, #EBD4B8 100%);
       border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      text-align: center;
-      border: 3px solid #0641AD;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
       position: relative;
-    }
-
-    .title {
-      color: #0641AD;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #0641AD;
-      margin-bottom: 15px;
-    }
-
-    .subtitle {
-      font-size: 22px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .message {
-      margin-top: 15px;
-      font-size: 20px;
-      line-height: 1.4;
-      padding: 0 20px;
-      min-height: 80px;
-      max-height: 200px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px;
     }
 
-    .footer {
-      margin-top: 30px;
-      font-size: 18px;
-      font-style: italic;
-      color: #0641AD;
+    /* Decorative Elements */
+    .leaf {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(1100px) rotate(360deg);
+      }
+    }
+
+    .pumpkin {
+      position: absolute;
+      font-size: 40px;
+      opacity: 0.4;
+    }
+
+    .corner-decoration {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      opacity: 0.7;
+      z-index: 5;
+    }
+
+    .teamwork-img {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      opacity: 0.6;
+      z-index: 5;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .thankyou-img {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      opacity: 0.7;
+      z-index: 5;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .thank-you-text {
+      position: absolute;
+      font-size: 24px;
+      font-weight: 700;
+      color: #C17A3C;
+      opacity: 0.5;
+      z-index: 5;
+      transform: rotate(-15deg);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .gratitude-icon {
+      position: absolute;
+      font-size: 32px;
+      opacity: 0.4;
+      z-index: 5;
+      animation: pulse-slow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-slow {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Header Section */
+    .header-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      margin-bottom: 0;
+      padding-bottom: 5px;
+      border-bottom: 3px solid rgba(193, 122, 60, 0.4);
     }
 
     .coupa-logo {
-      width: 140px;
+      width: 200px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .date-badge {
+      text-align: right;
+    }
+
+    .date-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .teamwork-section {
+      position: relative;
+      width: 100%;
+      margin: -5px 0 20px 0;
+    }
+
+    .teamwork-background {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .teamwork-background img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      opacity: 0.9;
       display: block;
-      margin: auto;
+      object-fit: contain;
+    }
+
+    .title-section {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 15;
+      width: 90%;
+      background: rgba(245, 230, 211, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .main-title {
+      font-size: 56px;
+      font-weight: 700;
+      color: #C17A3C;
+      text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
       margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle-text {
+      font-size: 18px;
+      color: #4A4A4A;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    }
+
+    /* Center Circle Section */
+    .center-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      z-index: 5;
+    }
+
+    .decorative-circle {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(6, 65, 173, 0.3) 0%, rgba(255, 179, 71, 0.3) 100%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .photo-circle {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border: 6px solid #0641AD;
+      overflow: hidden;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .name-display {
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .name-text {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0641AD;
+      word-wrap: break-word;
+      line-height: 1.2;
+      max-width: 90%;
+      margin-bottom: 60px;
+    }
+
+    .category-badge {
+      width: 225px;
+      height: 40px;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #C17A3C 0%, #D4935F 100%);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      border: 3px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.2;
+    }
+
+
+    .message-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px 35px;
+      border-radius: 15px;
+      margin: 20px 30px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .message-content {
+      width: 100%;
+    }
+
+    .dear-name {
+      font-size: 19px;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .message-text {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.6;
+      font-weight: 500;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .from-text {
+      font-size: 17px;
+      color: #8B4513;
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* Footer Section */
+    .footer-section {
+      text-align: center;
+      z-index: 10;
+    }
+
+    .values-container {
+      padding: 15px;
+      border-radius: 15px;
+    }
+
+    .coupa-values {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .values-text {
+      font-size: 15px;
+      color: #8B5A2B;
+      font-weight: 600;
+      margin-top: 10px;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    .hashtags-text {
+      font-size: 16px;
+      color: #000;
+      font-weight: 700;
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #card {
+        width: 600px;
+        height: 750px;
+        padding: 30px;
+      }
+
+      .main-title {
+        font-size: 42px;
+      }
+
+      .date-text {
+        font-size: 20px;
+      }
+
+      .coupa-logo {
+        width: 150px;
+      }
+
+      .teamwork-background img {
+        width: 100%;
+        height: auto;
+      }
+
+      .date-text {
+        font-size: 16px;
+      }
+
+      .circle-container {
+        width: 200px;
+        height: 200px;
+      }
+
+      .decorative-circle {
+        width: 240px;
+        height: 240px;
+      }
+
+      .photo-circle {
+        width: 200px;
+        height: 200px;
+      }
+
+      .name-text {
+        font-size: 24px;
+      }
+
+    }
+
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
 
 <body>
 
-<h2>Coupa Appreciation Day – Image Generator</h2>
+<h1>🍂 Coupa ThankYou Day 2025 🍂</h1>
 
 <div class="form-box">
-
-  <label>Your Name (From):</label>
-  <input id="from" type="text" placeholder="Enter your name" />
-
   <label>Employee Name:</label>
-  <input id="name" type="text" placeholder="Who are you appreciating?" />
+  <input id="name" type="text" placeholder="Enter employee name" />
 
-  <label>Message:</label>
-  <textarea id="message" rows="4" placeholder="Write your appreciation..."></textarea>
+  <label>Select Coupa Value Category:</label>
+  <select id="category">
+    <option value="">-- Select a Value --</option>
+    <option value="Drive Success for #AllofUs">Drive Success for #AllofUs</option>
+    <option value="Own Our Results">Own Our Results</option>
+    <option value="Cultivate Belonging">Cultivate Belonging</option>
+    <option value="Build Tomorrow Together">Build Tomorrow Together</option>
+  </select>
 
-  <label>Upload Photo:</label>
+  <label>Appreciation Message (Optional):</label>
+  <textarea id="message" rows="4" maxlength="512" placeholder="Write your gratitude message... (max 512 characters)"></textarea>
+  <div style="text-align: right; font-size: 12px; color: #666; margin-top: 5px;">
+    <span id="charCount">0</span>/512 characters
+  </div>
+
+  <label>From (Optional):</label>
+  <input id="from" type="text" placeholder="Your name" />
+
+  <label>Upload Photo (Optional):</label>
   <input id="photoInput" type="file" accept="image/*" />
 
-  <button class="generate-btn" onclick="generateImage()">Generate Appreciation Image</button>
+  <button class="generate-btn" onclick="generateImage()">🎨 Generate ThankYou Poster</button>
 </div>
 
-<!-- Appreciation Card -->
+<!-- ThankYou Day Poster -->
 <div id="card">
-  <img class="coupa-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Coupa_logo.png/320px-Coupa_logo.png" />
+  <!-- Falling Leaves -->
+  <div class="leaf" style="left: 10%; animation-duration: 8s; animation-delay: 0s;">🍂</div>
+  <div class="leaf" style="left: 25%; animation-duration: 10s; animation-delay: 2s;">🍁</div>
+  <div class="leaf" style="left: 40%; animation-duration: 12s; animation-delay: 1s;">🍂</div>
+  <div class="leaf" style="left: 60%; animation-duration: 9s; animation-delay: 3s;">🍁</div>
+  <div class="leaf" style="left: 75%; animation-duration: 11s; animation-delay: 0.5s;">🍂</div>
+  <div class="leaf" style="left: 90%; animation-duration: 10s; animation-delay: 2.5s;">🍁</div>
+  
+  <!-- Pumpkin Decorations -->
+  <div class="pumpkin" style="bottom: 120px; left: 30px;">🎃</div>
+  <div class="pumpkin" style="bottom: 140px; right: 40px;">🎃</div>
 
-  <img id="photoPreview" class="photo" style="display:none;" />
+  <!-- Header with Logo and Date -->
+  <div class="header-section">
+    <img class="coupa-logo" src="Coupa_logo.png" alt="Coupa Logo" />
+    <div class="date-badge">
+      <div class="date-text">November 26, 2025</div>
+    </div>
+  </div>
 
-  <div class="title">Appreciation Day</div>
+  <!-- Team-Work Image with Title Overlay -->
+  <div class="teamwork-section">
+    <div class="teamwork-background">
+      <img src="Team-Work.png" alt="Teamwork" />
+    </div>
+    <div class="title-section">
+      <div class="main-title">ThankYou Day</div>
+      <div class="subtitle-text">Celebrating the people behind our success</div>
+    </div>
+  </div>
 
-  <div class="subtitle">👏 Appreciating <span id="namePreview"></span></div>
+  <!-- Center Circle -->
+  <div class="center-section">
+    <div class="circle-container">
+      <div class="decorative-circle"></div>
+      <div class="photo-circle">
+        <img id="photoPreview" class="photo hidden" alt="Employee Photo" />
+        <div id="nameDisplay" class="name-display">
+          <div class="name-text" id="namePreview">Employee Name</div>
+        </div>
+        <div id="categoryBadge" class="category-badge hidden"></div>
+      </div>
+    </div>
+  </div>
 
-  <div class="message" id="msgPreview"></div>
+  <!-- Message Box -->
+  <div id="messageContainer" class="message-box hidden">
+    <div class="message-content">
+      <div class="dear-name" id="dearName"></div>
+      <div class="message-text" id="msgPreview"></div>
+      <div class="from-text" id="fromPreview"></div>
+    </div>
+  </div>
 
-  <div class="footer">— <span id="fromPreview"></span></div>
+  <!-- Footer with Coupa Values -->
+  <div class="footer-section">
+    <div class="values-container">
+      <img class="coupa-values" src="coupa_value.png" alt="Coupa Values" />
+      <div class="values-text">Ensure Success | Focus on Results | Strive for Excellence</div>
+      <div class="hashtags-text">#CoupaAppreciates #ThankYouDay</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -164,25 +608,104 @@
   const msgInput = document.getElementById("message");
   const fromInput = document.getElementById("from");
   const photoInput = document.getElementById("photoInput");
+  const categoryInput = document.getElementById("category");
 
   const namePreview = document.getElementById("namePreview");
+  const nameDisplay = document.getElementById("nameDisplay");
   const msgPreview = document.getElementById("msgPreview");
   const fromPreview = document.getElementById("fromPreview");
   const photoPreview = document.getElementById("photoPreview");
+  const messageContainer = document.getElementById("messageContainer");
+  const charCount = document.getElementById("charCount");
+  const categoryBadge = document.getElementById("categoryBadge");
+  const dearName = document.getElementById("dearName");
 
   // Live Preview Updates
   nameInput.addEventListener("input", () => {
-    namePreview.innerText = nameInput.value;
+    const name = nameInput.value || "Employee Name";
+    namePreview.innerText = name;
+    updateDearName(name);
   });
+
+  function updateDearName(name) {
+    dearName.innerText = "Dear " + name + ",";
+  }
 
   msgInput.addEventListener("input", () => {
-    msgPreview.innerText = msgInput.value;
-    autoResizeFont();
+    const message = msgInput.value.trim();
+    charCount.innerText = msgInput.value.length;
+    
+    if (message) {
+      msgPreview.innerText = message;
+      messageContainer.classList.remove("hidden");
+      updateDearName(nameInput.value || "Employee Name");
+      autoResizeMessageFont();
+    } else {
+      messageContainer.classList.add("hidden");
+    }
   });
 
+  // Auto resize message font if text is too long
+  function autoResizeMessageFont() {
+    const textLength = msgInput.value.length;
+    let fontSize = 17;
+    let dearFontSize = 19;
+    
+    if (textLength > 450) {
+      fontSize = 13;
+      dearFontSize = 15;
+    } else if (textLength > 350) {
+      fontSize = 14;
+      dearFontSize = 16;
+    } else if (textLength > 250) {
+      fontSize = 15;
+      dearFontSize = 17;
+    } else if (textLength > 150) {
+      fontSize = 16;
+      dearFontSize = 18;
+    }
+    
+    msgPreview.style.fontSize = fontSize + "px";
+    dearName.style.fontSize = dearFontSize + "px";
+  }
+
   fromInput.addEventListener("input", () => {
-    fromPreview.innerText = fromInput.value;
+    const fromName = fromInput.value.trim();
+    if (fromName) {
+      fromPreview.innerText = "— " + fromName;
+      fromPreview.style.display = "block";
+    } else {
+      fromPreview.style.display = "none";
+    }
   });
+
+  // Category Selection
+  categoryInput.addEventListener("change", () => {
+    const category = categoryInput.value;
+    if (category) {
+      categoryBadge.innerText = category;
+      categoryBadge.classList.remove("hidden");
+      autoResizeCategoryFont();
+    } else {
+      categoryBadge.classList.add("hidden");
+    }
+  });
+
+  // Auto resize category badge font to fit within fixed dimensions
+  function autoResizeCategoryFont() {
+    const maxWidth = 225;
+    const maxHeight = 40;
+    let fontSize = 13;
+    const minFontSize = 9;
+    
+    categoryBadge.style.fontSize = fontSize + "px";
+    
+    // Reduce font size if text overflows
+    while ((categoryBadge.scrollWidth > maxWidth || categoryBadge.scrollHeight > maxHeight) && fontSize > minFontSize) {
+      fontSize -= 0.5;
+      categoryBadge.style.fontSize = fontSize + "px";
+    }
+  }
 
   // Photo Upload Preview
   photoInput.addEventListener("change", function (e) {
@@ -192,34 +715,39 @@
     const reader = new FileReader();
     reader.onload = function (event) {
       photoPreview.src = event.target.result;
-      photoPreview.style.display = "block";
+      photoPreview.classList.remove("hidden");
+      nameDisplay.style.display = "none";
     };
     reader.readAsDataURL(file);
   });
 
-  // Automatic font resizing for long messages
-  function autoResizeFont() {
-    let maxFont = 22;
-    let minFont = 14;
-    let msg = msgPreview;
-
-    msg.style.fontSize = maxFont + "px";
-
-    while (msg.scrollHeight > msg.clientHeight && maxFont > minFont) {
-      maxFont -= 1;
-      msg.style.fontSize = maxFont + "px";
-    }
-  }
-
   // Generate final image
   function generateImage() {
     const card = document.getElementById("card");
+    const leaves = card.querySelectorAll(".leaf");
+    
+    // Temporarily pause animations for cleaner screenshot
+    leaves.forEach(leaf => {
+      leaf.style.animationPlayState = "paused";
+    });
 
-    html2canvas(card, { scale: 3 }).then(canvas => {
+    html2canvas(card, { 
+      scale: 2,
+      backgroundColor: null,
+      logging: false,
+      useCORS: true,
+      allowTaint: true
+    }).then(canvas => {
       const link = document.createElement("a");
-      link.download = "coupa-appreciation.png";
+      const employeeName = nameInput.value || "employee";
+      link.download = `thankyou-day-${employeeName.replace(/\s+/g, '-').toLowerCase()}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
+
+      // Resume animations
+      leaves.forEach(leaf => {
+        leaf.style.animationPlayState = "running";
+      });
     });
   }
 </script>
